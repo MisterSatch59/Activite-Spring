@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Built-By: jerem
+Class-Path: ticketAct-business-1.0-SNAPSHOT.jar ticketAct-consumer-1.0
+ -SNAPSHOT.jar spring-jdbc-4.3.11.RELEASE.jar spring-tx-4.3.11.RELEASE
+ .jar ticketAct-model-1.0-SNAPSHOT.jar spring-context-4.3.11.RELEASE.j
+ ar spring-aop-4.3.11.RELEASE.jar spring-beans-4.3.11.RELEASE.jar spri
+ ng-core-4.3.11.RELEASE.jar spring-expression-4.3.11.RELEASE.jar javax
+ .annotation-api-1.2.jar javax.inject-1.jar postgresql-9.4.1212.jar co
+ mmons-dbcp2-2.1.1.jar commons-pool2-2.4.2.jar commons-logging-1.2.jar
+Build-Jdk: 1.8.0_162
+Created-By: Maven Integration for Eclipse
+Main-Class: org.ticketAct.batch.Main
+
