@@ -18,12 +18,12 @@ import org.ticketAct.model.bean.ticket.TicketStatut;
 
 import recherche.ticket.RechercheTicket;
 
-@Named ("ticketDao")
+@Named("ticketDao")
 public class TicketDaoImpl extends AbstractDaoImpl implements TicketDao {
 
 	@Override
 	public int getCountTicket(RechercheTicket pRechercheTicket) {
-		
+
 		MapSqlParameterSource vParams = new MapSqlParameterSource();
 
 		StringBuilder vSQL = new StringBuilder("SELECT COUNT(*) FROM ticket WHERE 1=1");
@@ -62,35 +62,32 @@ public class TicketDaoImpl extends AbstractDaoImpl implements TicketDao {
 	public void updateTicketStatut(TicketStatut pTicketStatut) {
 		String vSQL = "UPDATE statut SET libelle = ? WHERE id = ?";
 
-        Object[] vParams = {
-            new SqlParameterValue(Types.INTEGER, pTicketStatut.getId()),
-            new SqlParameterValue(Types.VARCHAR, pTicketStatut.getLibelle()),
-        };
+		Object[] vParams = { new SqlParameterValue(Types.INTEGER, pTicketStatut.getId()),
+				new SqlParameterValue(Types.VARCHAR, pTicketStatut.getLibelle()), };
 
-        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
-        vJdbcTemplate.update(vSQL, vParams);
+		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+		vJdbcTemplate.update(vSQL, vParams);
 	}
 
 	@Override
 	public void insertTicketStatut(TicketStatut pTicketStatut) {
-	    String vSQL = "INSERT INTO statut (id, libelle) VALUES (:id, :libelle)";
-	    NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+		String vSQL = "INSERT INTO statut (id, libelle) VALUES (:id, :libelle)";
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
 
-	    BeanPropertySqlParameterSource vParams = new BeanPropertySqlParameterSource(pTicketStatut);
-	    vParams.registerSqlType("id", Types.INTEGER);
-	    vParams.registerSqlType("libelle", Types.VARCHAR);
+		BeanPropertySqlParameterSource vParams = new BeanPropertySqlParameterSource(pTicketStatut);
+		vParams.registerSqlType("id", Types.INTEGER);
+		vParams.registerSqlType("libelle", Types.VARCHAR);
 
-	    try {
-	        vJdbcTemplate.update(vSQL, vParams);
-	    } catch (DuplicateKeyException vEx) {
-	        System.out.println("Le TicketStatut existe déjà ! id=" + pTicketStatut.getId());
-	        vEx.printStackTrace();
-	    }
+		try {
+			vJdbcTemplate.update(vSQL, vParams);
+		} catch (DuplicateKeyException vEx) {
+			System.out.println("Le TicketStatut existe déjà ! id=" + pTicketStatut.getId());
+			vEx.printStackTrace();
+		}
 	}
-	
+
 	@Override
 	public void updateTicket(Ticket pTicket) {
-		// TODO Auto-generated method stub
 
 	}
 }

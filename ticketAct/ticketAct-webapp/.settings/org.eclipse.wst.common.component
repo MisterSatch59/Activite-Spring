@@ -8,9 +8,6 @@
         <dependent-module archiveName="ticketAct-business-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ticketAct-business/ticketAct-business">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="ticketAct-consumer-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ticketAct-consumer/ticketAct-consumer">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="ticketAct-model-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ticketAct-model/ticketAct-model">
             <dependency-type>uses</dependency-type>
         </dependent-module>

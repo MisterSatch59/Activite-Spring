@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Named;
 
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
@@ -42,7 +43,10 @@ public class ProjetManagerImpl extends AbstractManagerImpl implements ProjetMana
 			TransactionStatus vTScommit = vTransactionStatus;
 			vTransactionStatus = null;
 			this.getPlatformTransactionManager().commit(vTScommit);
-		} finally {
+		} catch (DuplicateKeyException e){
+			System.out.println("La version existe déjà");
+		}
+		finally {
 			if (vTransactionStatus != null) {
 				this.getPlatformTransactionManager().rollback(vTransactionStatus);
 			}
